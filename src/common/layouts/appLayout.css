@@ -1,0 +1,15 @@
+.resize-handle {
+    line-height: 2rem;
+    width: 5px;
+    background-color: #1d1d1dd2
+}
+
+.resize-handle-horizontal {
+    height: 5px;
+    background-color: #1d1d1dd2
+}
+
+.resize-handle-horizontal[data-resize-handle-state="drag"],
+.resize-handle[data-resize-handle-state="drag"] {
+  background-color: #1f8bded2;
+}
