@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import './App.css';
 import ActivityBar from './common/components/ActivityBar';
 import SearchBar from './common/components/SearchBar';
 import StatusBar from './common/components/StatusBar';
 import AppLayout from './common/layouts/AppLayout';
+import * as monaco from 'monaco-editor';
 
 function App() {
+    const [position, setPosition] =
+        useState<monaco.editor.ICursorPositionChangedEvent['position']>();
     return (
         <>
             <div
@@ -21,7 +25,7 @@ function App() {
                     style={{
                         height: '100%',
                         width: '100%',
-                        display: 'flex'
+                        display: 'flex',
                     }}
                 >
                     <ActivityBar />
@@ -31,11 +35,14 @@ function App() {
                             width: '100%',
                         }}
                     >
-                        <AppLayout />
+                        <AppLayout setPosition={setPosition} />
                     </div>
                 </div>
                 <div>
-                    <StatusBar />
+                    <StatusBar
+                        line={position?.lineNumber ?? 0}
+                        column={position?.column ?? 0}
+                    />
                 </div>
             </div>
         </>
