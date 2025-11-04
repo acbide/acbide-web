@@ -5,6 +5,7 @@ import ToolBar from '../components/ToolBar';
 
 import './appLayout.css';
 import EditorView from '../components/Editor';
+import TerminalView from '../components/Terminal';
 
 function AppLayout({ setPosition }: any) {
     return (
@@ -43,7 +44,7 @@ function AppLayout({ setPosition }: any) {
                             <ToolBar />
                         </div>
                         <PanelGroup direction="horizontal">
-                            <Panel defaultSize={40}>Terminal</Panel>
+                            <Panel defaultSize={40}><TerminalView /></Panel>
                             <PanelResizeHandle className="resize-handle" />
                             <Panel defaultSize={10}>Terminal number</Panel>
                         </PanelGroup>
