@@ -4,8 +4,9 @@ import Header from '../components/Header';
 import ToolBar from '../components/ToolBar';
 
 import './appLayout.css';
+import EditorView from '../components/Editor';
 
-function AppLayout() {
+function AppLayout({ setPosition }: any) {
     return (
         <PanelGroup direction="horizontal" autoSaveId={'app-layout'}>
             <Panel
@@ -29,7 +30,9 @@ function AppLayout() {
             <Panel>
                 <PanelGroup direction="vertical">
                     <Header />
-                    <Panel>Editor</Panel>
+                    <Panel>
+                        <EditorView setPosition={setPosition} />
+                    </Panel>
                     <PanelResizeHandle className="resize-handle-horizontal" />
                     <Panel collapsible={true} collapsedSize={0} minSize={0}>
                         <div
