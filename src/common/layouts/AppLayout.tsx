@@ -7,6 +7,8 @@ import EditorView from '../components/Editor';
 import TerminalView from '../components/Terminal';
 
 import './appLayout.css';
+import FileExplorerView from '../components/FolderStructureView';
+import { folderStructure } from '../constants';
 
 function AppLayout({ setPosition }: any) {
     return (
@@ -26,7 +28,7 @@ function AppLayout({ setPosition }: any) {
                 >
                     <ToolBar />
                 </div>
-                File Explorer
+                <FileExplorerView folderData={folderStructure} />
             </Panel>
             <PanelResizeHandle className="resize-handle" />
             <Panel>
@@ -42,10 +44,12 @@ function AppLayout({ setPosition }: any) {
                                 borderBottom: '3px solid #1d1d1dd2',
                             }}
                         >
-                            <ToolBar customText='Terminal'/>
+                            <ToolBar customText="Terminal" />
                         </div>
                         <PanelGroup direction="horizontal">
-                            <Panel><TerminalView /></Panel>
+                            <Panel>
+                                <TerminalView />
+                            </Panel>
                             <PanelResizeHandle className="resize-handle" />
                         </PanelGroup>
                     </Panel>
