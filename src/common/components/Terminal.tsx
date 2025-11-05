@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { Terminal } from '@xterm/xterm';
-import '@xterm/xterm/css/xterm.css';
 import { FitAddon } from '@xterm/addon-fit';
+import '@xterm/xterm/css/xterm.css';
 
 function TerminalView() {
+    const [text, setText] = useState('');
+
     const terminalRef = useRef(null);
     const terminal = useRef<Terminal>(null);
 
@@ -23,6 +25,12 @@ function TerminalView() {
         if (domEvent.code === 'Enter') {
             terminal.current?.writeln('')
         }
+        if (domEvent.code === 'Backspace') {
+            const newText = text.slice(0, -1);
+            console.log({newText});
+            setText(newText);
+            terminal.current?.write(newText)
+        }
     };
 
     
@@ -34,6 +42,9 @@ function TerminalView() {
             theme: {
                 background: '#1e1e1e',
             },
+            cursorBlink: true,
+            cursorStyle: 'bar',
+            convertEol: true,
         });
         const fitAddon = new FitAddon();
         terminal.current.loadAddon(fitAddon);
