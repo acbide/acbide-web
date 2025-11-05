@@ -3,9 +3,10 @@ import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import Header from '../components/Header';
 import ToolBar from '../components/ToolBar';
 
-import './appLayout.css';
 import EditorView from '../components/Editor';
 import TerminalView from '../components/Terminal';
+
+import './appLayout.css';
 
 function AppLayout({ setPosition }: any) {
     return (
@@ -41,12 +42,11 @@ function AppLayout({ setPosition }: any) {
                                 borderBottom: '3px solid #1d1d1dd2',
                             }}
                         >
-                            <ToolBar />
+                            <ToolBar customText='Terminal'/>
                         </div>
                         <PanelGroup direction="horizontal">
-                            <Panel defaultSize={40}><TerminalView /></Panel>
+                            <Panel><TerminalView /></Panel>
                             <PanelResizeHandle className="resize-handle" />
-                            <Panel defaultSize={10}>Terminal number</Panel>
                         </PanelGroup>
                     </Panel>
                 </PanelGroup>

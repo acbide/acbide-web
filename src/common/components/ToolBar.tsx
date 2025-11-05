@@ -1,7 +1,5 @@
-function ToolBar() {
-  return (
-    <div>ToolBar</div>
-  )
+function ToolBar({customText}: {customText?: string}) {
+  return <div>{customText || "ToolBar"}</div>;
 }
 
 export default ToolBar
